@@ -18,7 +18,7 @@ body {
 }
 .product-grid .product-discount-label{
     color: #fff;
-    background: #78a206;
+    background: black;
     font-size: 14px;
     font-weight: 400;
     text-transform: uppercase;
@@ -62,7 +62,7 @@ body {
 }
 .product-grid .product-links li a:hover{
     color: #fff;
-    background: #78a206;
+    background: black;
     box-shadow: 1px 1px 30px 0 rgba(0, 0, 0, 0.2);
 }
 .product-grid .product-links li a:before,
@@ -104,7 +104,7 @@ body {
     list-style: none;
 }
 .product-grid .rating li{
-    color: #78a206;
+    color: black;
     font-size: 14px;
 }
 .product-grid .rating .far{ color: #808080; }
@@ -121,21 +121,17 @@ body {
 }
 .product-grid .title a:hover{ color: #78a206; }
 .product-grid .price{
-    color: #78a206;
+    color: black;
     font-size: 17px;
-    font-weight: 600;
+    /* font-weight: 600; */
     display: block;
+    /* color: rgb(225, 13, 13); */
     transition: all 0.4s ease-in-out;
-}
-.product-grid .price span{
-    color: #999;
-    font-weight: 500;
-    text-decoration: line-through;
 }
 .product-grid:hover .price{ opacity: 0; }
 .product-grid .add-to-cart{
     color: #fff;
-    background-color: #78a206;
+    background-color: black;
     font-size: 16px;
     font-weight: 500;
     text-decoration: none;
@@ -161,13 +157,13 @@ body {
 }
 /*Products*/
 .btn-page-detail:hover {
-    background-color: #78a206;
+    background-color: black;
 }
 .list-group-item a{
     text-decoration: none;
 }
 .list-group-item:hover{
-    background-color: #78a206;
+    background-color: black;
     border: 1px solid #e7e7e7;
     overflow: hidden;
     transition: all 0.5s ease-out;
@@ -177,7 +173,7 @@ body {
 }
 /*Product Detail*/
 .infoProduct .rating {
-    color: #78a206;
+    color: black;
     size: 30px;
     margin-left: -30px;
 }
@@ -185,13 +181,13 @@ body {
     margin-right: 2px;
 }
 .comment .title {
-    border-left: 5px solid #78a206;
+    border-left: 5px solid black;
 }
 .box-comment:hover{
-    border-bottom: 1px solid #78a206;
+    border-bottom: 1px solid black;
 }
 .productInvolve .title1 {
-    border-left: 5px solid #78a206;
+    border-left: 5px solid black;
 }
 
 /*Login*/
@@ -275,6 +271,9 @@ body {
     overflow-x: auto;
     overflow-y: hidden;
     background-color: black;
+    position: fixed;
+    z-index: 1;
+    width: 15%;
 }
 .nav-pills li a{
     color: white;
@@ -306,7 +305,7 @@ h2::after {
 	margin: 0 auto;
 	height: 4px;
 	border-radius: 1px;
-	background: #7ac400;
+	background: black;
 	left: 0;
 	right: 0;
 	bottom: -20px;
@@ -324,13 +323,13 @@ h2::after {
 .carousel-control-prev, .carousel-control-next {
 	height: 44px;
 	width: 40px;
-	background: #7ac400;	
+	background: black;	
 	margin: auto 0;
 	border-radius: 4px;
 	opacity: 0.8;
 }
 .carousel-control-prev:hover, .carousel-control-next:hover {
-	background: #78bf00;
+	background: black;
 	opacity: 1;
 }
 .carousel-control-prev i, .carousel-control-next i {
@@ -383,7 +382,34 @@ h2::after {
 .star-rating li {
 	padding: 0;
 }
-.star-rating i {
-	font-size: 14px;
-	color: #ffc000;
+/*Form Product*/
+.form-control {
+	box-shadow: none;
+	border-color: #ddd;
 }
+.form-control:focus {
+	border-color: black;
+	box-shadow: 0 0 8px rgba(96, 92, 94, 0.4);
+}
+.modal-form {
+	color: #434343;
+}
+.modal-form .modal-content {
+	padding: 10px;
+	border-radius: 1px;
+	border: none;
+	position: relative;
+    top: 50px;
+    width: 800px;
+    left: -100px;
+}
+.modal-form .modal-header {
+	border-bottom: none;
+}
+
+.modal-form .close {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+}
+

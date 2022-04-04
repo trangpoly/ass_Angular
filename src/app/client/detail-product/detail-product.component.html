@@ -1,10 +1,10 @@
 <div class="container m-auto">
     <div class="infoProduct row p-3">
         <div class="col-5 border">
-            <img src="https://bizweb.dktcdn.net/100/369/010/products/bob-t-shirts-tan-3-w.jpg?v=1608103670000" class="img-fluid" alt="">
+            <img src="{{product.image}}" class="img-fluid" alt="">
         </div>
         <div class="col-7 ps-5">
-            <h3 class="title fw-bold">Men's Blazer</h3>
+            <h3 class="title fw-bold">{{product.name}}</h3>
             <ul class="rating">
                 <li class="fas fa-star"></li>
                 <li class="fas fa-star"></li>
@@ -12,9 +12,9 @@
                 <li class="far fa-star"></li>
                 <li class="far fa-star"></li>
             </ul>
-            <p class="priceProduct fs-4 text-secondary"><span class="text-decoration-line-through"> 200$ </span><span class="text-danger fw-bold">150$</span></p>
+            <p class="priceProduct fs-4 text-secondary">{{product.price}} $</p>
             <h6>Description:</h6>
-            <p class="text-secondary">Imagine the advantages of going big without slowing down. The big 19" 941BW monitor combines wide aspect ratio with fast pixel response time, for bigger images, more room to work and crisp motion. In addition, the exclusive MagicBright 2, MagicColor and MagicTune technologies help deliver the ideal image in every situation, while sleek, narrow bezels and adjustable stands deliver style just the way you want it. With the Samsung 941BW widescreen analog/digital LCD monitor, it's not hard to imagine.</p>
+            <p class="text-secondary">{{product.desc}}</p>
             <div class="action text-center">
                 <button type="button" class="btn btn-outline-dark col-10 p-2 fs-5"><i class="fas fa-cart-plus me-3"></i>Thêm vào giỏ hàng</button>
                 <button type="button" class="btn btn-outline-dark col-10 mt-3 p-2 fs-5">Mua ngay</button>

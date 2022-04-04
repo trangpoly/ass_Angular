@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
-import { ProductsComponent } from './admin/products/products.component';
+import { ListCateComponent } from './admin/categories/list-cate/list-cate.component';
+import { ListComponent } from './admin/products/list/list.component';
 import { ClientComponent } from './client/client.component';
 import { DetailProductComponent } from './client/detail-product/detail-product.component';
 import { HomeComponent } from './client/home/home.component';
@@ -37,8 +38,12 @@ const routes: Routes = [
       },
       {
         path: 'products',
-        component: ProductsComponent
+        component: ListComponent
       },
+      {
+        path: 'categories',
+        component: ListCateComponent
+      }
     ]
   }
   
