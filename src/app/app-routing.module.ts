@@ -18,11 +18,11 @@ const routes: Routes = [
         component: HomeComponent
       },
       {
-        path: 'products',
+        path: 'phones',
         component: ProductComponent
       },
       {
-        path: 'product/:id',
+        path: 'phone/:id',
         component: DetailProductComponent
       }
     ]
@@ -33,11 +33,11 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'products',
+        redirectTo: 'phones',
         pathMatch: 'full'
       },
       {
-        path: 'products',
+        path: 'phones',
         component: ListComponent
       },
       {

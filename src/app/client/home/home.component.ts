@@ -7,15 +7,15 @@ import { ProductService } from 'src/app/services/product/product.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  products: any;
+  phones: any;
   constructor(
     private ps: ProductService
   ) { }
 
   ngOnInit(): void {
     this.ps.getNewProduct().subscribe(data => {
-      this.products = data;
-      console.log(this.products)
+      this.phones = data;
+      console.log(this.phones)
     })
   }
 

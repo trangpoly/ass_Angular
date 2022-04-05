@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const urlApi = "http://localhost:3000/products";
+const urlApi = "http://localhost:3000/phones";
 
 @Injectable({
   providedIn: 'root'

@@ -1,23 +1,24 @@
-<div id="myModal" class="modal fade">
+<div id="exampleModal{{phoneId && phoneId || 0}}" class="modal fade" >
 	<div class="modal-dialog modal-form">
 		<div class="modal-content">
 			<div class="modal-header">
-                <h3 class="col-12 fs-3 fw-bold text-center text-dark">Add Product</h3>
+                <h3 *ngIf="phoneId" class="col-12 fs-3 fw-bold text-center text-dark">Edit Phone</h3>
+                <h3 *ngIf="phoneId === 0" class="col-12 fs-3 fw-bold text-center text-dark">Add Phone</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			</div>
 			<div class="modal-body">
 				<form>
                     <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label">Name Product: </label>
-                      <input type="text" class="form-control">
+                      <input type="text"  class="form-control" value="{{phoneDetail.name}}">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Desc: </label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" value="{{phoneDetail.desc}}">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Price: </label>
-                        <input type="number" class="form-control">
+                        <input type="number" class="form-control" value="{{phoneDetail.price}}">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Image: </label>
@@ -30,7 +31,8 @@
                             <option value="2">Chưa kích hoạt</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-dark col-2 m-auto">ADD</button>
+                    <button *ngIf="phoneId === undefined" type="submit" class="btn btn-dark col-2 m-auto">ADD</button>
+                    <button *ngIf="phoneId" type="submit" class="btn btn-dark col-2 m-auto">EDIT</button>
                   </form>		
 			</div>
 		</div>

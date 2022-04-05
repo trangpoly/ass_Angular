@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './services/product/product.service';
 import { ListCateComponent } from './admin/categories/list-cate/list-cate.component';
 import { FormCateComponent } from './admin/categories/form-cate/form-cate.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -44,7 +45,9 @@ import { FormCateComponent } from './admin/categories/form-cate/form-cate.compon
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     ProductService

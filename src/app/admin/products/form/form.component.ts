@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ProductService } from 'src/app/services/product/product.service';
 
 @Component({
   selector: 'app-form',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
+  @Input() phoneId:any;
+  phoneDetail: any;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(
+    private ps : ProductService
+  ) {
+    this.phoneId = 0;
   }
+  
+  ngOnInit(): void {
+    this.ps.getProduct(this.phoneId).subscribe(data => {
+      this.phoneDetail = data;
+    })
+  }
+  
 
 }

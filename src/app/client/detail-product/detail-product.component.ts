@@ -8,7 +8,7 @@ import { ProductService } from 'src/app/services/product/product.service';
   styleUrls: ['./detail-product.component.css']
 })
 export class DetailProductComponent implements OnInit {
-  product: any;
+  phone: any;
   id: any;
   constructor(
     private ps: ProductService,
@@ -19,8 +19,8 @@ export class DetailProductComponent implements OnInit {
     this.id = this.router.snapshot.params['id'];
 
     this.ps.getProduct(this.id).subscribe(data => {
-      this.product = data;
-      console.log(this.product)
+      this.phone = data;
+      console.log(this.phone)
     })
   }
 
