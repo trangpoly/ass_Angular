@@ -17,9 +17,13 @@ export class FormComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.ps.getProduct(this.phoneId).subscribe(data => {
-      this.phoneDetail = data;
-    })
+    console.log(this.phoneId)
+    if(this.phoneId !== 1000) {
+      this.ps.getProduct(this.phoneId).subscribe(data => {
+        this.phoneDetail = data;
+      })
+    }
+  
   }
   
 
