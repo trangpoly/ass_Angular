@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
-import { ListCateComponent } from './admin/categories/list-cate/list-cate.component';
+import { FormComponent } from './admin/products/form/form.component';
 import { ListComponent } from './admin/products/list/list.component';
 import { ClientComponent } from './client/client.component';
 import { DetailProductComponent } from './client/detail-product/detail-product.component';
@@ -41,8 +41,16 @@ const routes: Routes = [
         component: ListComponent
       },
       {
-        path: 'categories',
-        component: ListCateComponent
+        path: 'phone/create',
+        component: FormComponent
+      },
+      {
+        path: 'phone/edit/:id',
+        component: FormComponent
+      },
+      {
+        path: 'phone/:id/:act',
+        component: FormComponent
       }
     ]
   }

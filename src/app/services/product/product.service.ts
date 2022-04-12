@@ -20,4 +20,13 @@ export class ProductService {
   getNewProduct(): Observable<any>{
     return this.http.get(`${urlApi}?_sort=id&_order=desc&_limit=8`)
   }
+  removeProduct(id: number):Observable<any>{
+    return this.http.delete(`${urlApi}/${id}`)
+  }
+  createProduct(data: any):Observable<any>{
+    return this.http.post(urlApi, data);
+  }
+  updateProduct(id: number, data:any):Observable<any>{
+    return this.http.put(`${urlApi}/${id}`, data)
+  }
 }

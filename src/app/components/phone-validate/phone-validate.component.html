@@ -1,0 +1,14 @@
+<div class="text-danger" *ngIf="formData?.dirty">
+    <p *ngIf="formData?.errors?.['required']">
+        {{key}} không được để trống
+    </p>
+    <p *ngIf="formData?.errors?.['minlength']">
+        {{key}} lớn hơn 6 ký tự
+    </p>
+    <p *ngIf="formData?.errors?.['maxlength']">
+        {{key}} phải dưới 11 kí tự
+    </p>
+    <p *ngIf="formData?.errors?.['min']">
+        {{key}} phải lớn hơn 1
+    </p>
+</div>

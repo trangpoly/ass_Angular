@@ -1,40 +1,58 @@
-<div id="exampleModal{{phoneId}}" class="modal fade" >
-	<div class="modal-dialog modal-form">
-		<div class="modal-content">
-			<div class="modal-header">
-                <h3 *ngIf="phoneId && phoneId !== 1000" class="col-12 fs-3 fw-bold text-center text-dark">Edit Phone</h3>
-                <h3 *ngIf="phoneId === 1000" class="col-12 fs-3 fw-bold text-center text-dark">Add Phone</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			</div>
-			<div class="modal-body">
-				<form>
-                    <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Name Product: </label>
-                      <input type="text"  class="form-control" value="{{phoneDetail ? phoneDetail.name : ''}}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Desc: </label>
-                        <input type="text" class="form-control" value="{{phoneDetail ? phoneDetail.desc : ''}}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Price: </label>
-                        <input type="number" class="form-control" value="{{phoneDetail ? phoneDetail.price : ''}}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Image: </label>
-                        <input type="file" class="form-control">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Status: </label>
-                        <select class="form-select">
-                            <option value="1">Kích hoạt</option>
-                            <option value="2">Chưa kích hoạt</option>
-                        </select>
-                    </div>
-                    <button *ngIf="phoneId === 1000" type="submit" class="btn btn-dark col-2 m-auto">ADD</button>
-                    <button *ngIf="phoneId && phoneId !== 1000" type="submit" class="btn btn-dark col-2 m-auto">EDIT</button>
-                  </form>		
-			</div>
-		</div>
-	</div>
-</div>  
+<div class="container-fluid p-0 pt-3">
+    <div class="modal-header">
+        <div class="col-12" *ngIf="id">
+            <h3 *ngIf="act" class="col-12 fs-3 fw-bold text-center text-dark">Phone Detail</h3>
+            <h3 *ngIf="act === undefined" class="col-12 fs-3 fw-bold text-center text-dark">Edit Phone</h3>
+        </div>
+        <h3 *ngIf="id===undefined" class="col-12 fs-3 fw-bold text-center text-dark">Add Phone</h3>
+    </div>
+    <div class="modal-body">
+        <!-- <p>{{phoneForm.form | json}}</p> -->
+        <form [formGroup]="phoneForm" (ngSubmit)="onSubmit(phoneForm.value)">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Name Product: </label>
+                <input type="text"  class="form-control" [(ngModel)]="phoneDetail.name" formControlName="name" >
+                <app-phone-validate
+                    [formField]="phoneForm.get('name')"
+                    key="Name Product"
+                ></app-phone-validate>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Desc: </label>
+                <input type="text" class="form-control" [(ngModel)]="phoneDetail.desc"  formControlName="desc" >
+                <app-phone-validate
+                    [formField]="phoneForm.get('desc')"
+                    key="Desc Product"
+                ></app-phone-validate>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Price: </label>
+                <input type="number" class="form-control" [(ngModel)]="phoneDetail.price"  formControlName="price" >
+                <app-phone-validate
+                    [formField]="phoneForm.get('price')"
+                    key="Price Product"
+                ></app-phone-validate>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Image: </label><br>
+                <input type="file" formControlName="image" [(ngModel)]="phoneDetail.image" (change)="changeImg($event)"><br><br>
+                <img [src]="phoneDetail.image" class="col-3" alt=""><br>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Status: </label>
+                <select class="form-select" formControlName="status">
+                    <option *ngIf="phoneDetail.status===0" value="0">Hiện</option>
+                    <option *ngIf="phoneDetail.status===1" value="1">Ẩn</option>
+                    <option value="0" selected >Hiển</option>
+                    <option value="1">Ẩn</option>
+                </select>
+            </div>
+            <div *ngIf="id">
+                <button *ngIf="act===undefined" [disabled]="phoneForm.invalid" type="submit" class="btn btn-dark col-2 m-auto">EDIT</button><br>
+            </div>
+            <button *ngIf="id===undefined" [disabled]="phoneForm.invalid" type="submit" class="btn btn-dark col-2 m-auto">ADD</button><br><br>
+            <a routerLink="/admin/phones" class="btn btn-dark col-2 m-auto">EXIT</a>
+          </form>		
+    </div>
+</div>
+
