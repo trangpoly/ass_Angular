@@ -18,7 +18,7 @@ export class ProductService {
     return this.http.get(`${urlApi}/${id}`)
   }
   getNewProduct(): Observable<any>{
-    return this.http.get(`${urlApi}?_sort=id&_order=desc&_limit=8`)
+    return this.http.get(`${urlApi}?_sort=id&_order=desc&_limit=8&status=0`)
   }
   removeProduct(id: number):Observable<any>{
     return this.http.delete(`${urlApi}/${id}`)
@@ -28,5 +28,8 @@ export class ProductService {
   }
   updateProduct(id: number, data:any):Observable<any>{
     return this.http.put(`${urlApi}/${id}`, data)
+  }
+  getProductsClient(): Observable<any>{
+    return this.http.get(`${urlApi}?status=0`);
   }
 }

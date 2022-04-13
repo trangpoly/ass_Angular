@@ -35,20 +35,21 @@
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Image: </label><br>
-                <input type="file" formControlName="image" [(ngModel)]="phoneDetail.image" (change)="changeImg($event)"><br><br>
-                <img [src]="phoneDetail.image" class="col-3" alt=""><br>
+                <input type="file" formControlName="image" (change)="changeImg($event)"><br><br>
+                <img *ngIf="imageBase64" [src]="imageBase64" width="200px" alt=""><br>
+                <img *ngIf="!imageBase64" [src]="phoneDetail.image" width="200px" alt=""><br>
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Status: </label>
                 <select class="form-select" formControlName="status">
-                    <option *ngIf="phoneDetail.status===0" value="0">Hiện</option>
-                    <option *ngIf="phoneDetail.status===1" value="1">Ẩn</option>
-                    <option value="0" selected >Hiển</option>
+                    <option *ngIf="phoneDetail.status===0" value="0" selected >Hiện</option>
+                    <option *ngIf="phoneDetail.status===1" value="1" selected >Ẩn</option>
                     <option value="1">Ẩn</option>
+                    <option value="0">Hiện</option>
                 </select>
             </div>
             <div *ngIf="id">
-                <button *ngIf="act===undefined" [disabled]="phoneForm.invalid" type="submit" class="btn btn-dark col-2 m-auto">EDIT</button><br>
+                <button *ngIf="act===undefined" type="submit" class="btn btn-dark col-2 m-auto">EDIT</button><br>
             </div>
             <button *ngIf="id===undefined" [disabled]="phoneForm.invalid" type="submit" class="btn btn-dark col-2 m-auto">ADD</button><br><br>
             <a routerLink="/admin/phones" class="btn btn-dark col-2 m-auto">EXIT</a>

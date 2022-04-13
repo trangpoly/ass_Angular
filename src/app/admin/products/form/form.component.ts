@@ -33,7 +33,7 @@ export class FormComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(20),
+          Validators.minLength(6),
           Validators.maxLength(255)
         ]
       ),
@@ -72,16 +72,16 @@ export class FormComponent implements OnInit {
         name: '',
         price: 0,
         desc: '',
-        status: 0,
+        status: '',
         image: ''
         
       }
     }
   }
-  onSubmit(obj: {name: string, price: number, desc: string, status: string}){
+  onSubmit(obj: {name: string, price: number, desc: string, status: number}){
     const submitData = {
       ...obj,
-      image : this.imageBase64
+      image : this.imageBase64 ? this.imageBase64 : this.phoneDetail.image 
     };
     if(this.id!==undefined){
       this.ps.updateProduct(this.id, submitData).subscribe(data => {
@@ -89,8 +89,11 @@ export class FormComponent implements OnInit {
       });
     }
     else {
-      this.ps.createProduct(submitData).subscribe();
-      this.router.navigate(['admin/phones']);
+      this.ps.createProduct({...submitData, status: +submitData.status}).subscribe(data => {
+        this.router.navigate(['admin/phones']);
+      }
+      );
+      
       
     }
   }
