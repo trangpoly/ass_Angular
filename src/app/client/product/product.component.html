@@ -1,37 +1,37 @@
 <div class="container m-auto row p-3">
     <div class="col-3 border mt-2">
-        <div class="search mt-2">
-            <input type="text" class="form-control" placeholder="Search Product">
+        <div class="search mt-2" >
+            <input type="text" class="form-control" placeholder="Search Product" (input)="searchPro($event)">
         </div>
         <div class="filter-cate">
             <h6 class="fw-bold mt-2">Categorie</h6>
-            <!-- <div *ngIf="categories.length > 0" >
+            <div *ngIf="categories.length > 0" >
                 <ul class="list-group" id="categoriesList">
-                    <li class="list-group-item category-list-item-all active-category">
-                        <a data-categoryindex="all" href="" class="text-secondary">All <i class="fas fa-arrow-right"></i></a>
+                    <li class="list-group-item category-list-item-all active-category" (click)="filterCate(0)">
+                        <a data-categoryindex="all" class="text-secondary">All <i class="fas fa-arrow-right"></i></a>
                     </li>
                     <div *ngFor="let category of categories">
-                        <li class="list-group-item ">
-                            <a data-categoryindex="all" href="" class="text-secondary">{{category.name}}<i class="fas fa-arrow-right"></i></a>
+                        <li class="list-group-item" (click)="filterCate(category.id)" >
+                            <a data-categoryindex="all" class="text-secondary">{{category.name}}<i class="fas fa-arrow-right"></i></a>
                         </li>
                         
                     </div>
                 </ul>
-            </div> -->
+            </div>
         </div>
     
         <div class="filter-price">
             <h6 class="fw-bold mt-2">Price</h6>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label text-secondary" for="flexCheckDefault">
+            <div class="form-check" (click)="sort('desc')">
+                <input class="form-check-input" type="radio" name="exampleRadios" [value]="0" id="exampleRadios1" value="option1">
+                <label class="form-check-label" for="exampleRadios1">
                   Cao đến thấp
                 </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label text-secondary" for="flexCheckDefault">
-                  Thấp đến cao
+              </div>
+            <div class="form-check" (click)="sort('asc')">
+                <input class="form-check-input" type="radio" name="exampleRadios" [value]="1" id="exampleRadios2" value="option2">
+                <label class="form-check-label" for="exampleRadios2">
+                    Thấp đến cao
                 </label>
             </div>
         </div>
@@ -66,11 +66,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 text-center m-2 btn-page">
+        <!-- <div class="col-12 text-center m-2 btn-page">
             <button type="button" class="btn-page-detail btn btn-outline-secondary m-1">1</button>
             <button type="button" class="btn-page-detail btn btn-outline-secondary m-1">2</button>
             <button type="button" class="btn-page-detail btn btn-outline-secondary m-1">3</button>
-        </div>
+        </div> -->
 
     </div>
 </div>

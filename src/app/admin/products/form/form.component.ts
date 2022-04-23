@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CategoryService } from 'src/app/services/category/category.service';
 import { ProductService } from 'src/app/services/product/product.service';
 
 @Component({
@@ -13,12 +14,14 @@ export class FormComponent implements OnInit {
   phoneDetail: any;
   id: any;
   act: any;
+  categories: any;
   //Upload Img
   imageBase64: any;
   constructor(
     private activeRouter: ActivatedRoute,
     private ps : ProductService,
     private router: Router,
+    private cs: CategoryService
   ) {
     this.phoneForm = new FormGroup({
       name: new FormControl(
@@ -55,6 +58,12 @@ export class FormComponent implements OnInit {
         [
           Validators.required
         ]
+      ),
+      categoryId: new FormControl(
+        '',
+        [
+          Validators.required
+        ]
       )
     })
   }
@@ -62,6 +71,9 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.activeRouter.snapshot.params['id'];
     this.act = this.activeRouter.snapshot.params['act'];
+    this.cs.getCatesClient().subscribe(data => {
+      return this.categories = data
+    })
     if(this.id!== undefined) {
       this.ps.getProduct(this.id).subscribe(data => {
         this.phoneDetail = data;
@@ -73,23 +85,24 @@ export class FormComponent implements OnInit {
         price: 0,
         desc: '',
         status: '',
-        image: ''
+        image: '',
+        categoryId: ''
         
       }
     }
   }
-  onSubmit(obj: {name: string, price: number, desc: string, status: number}){
+  onSubmit(obj: {name: string, price: number, desc: string, status: number, categoryId: number}){
     const submitData = {
       ...obj,
       image : this.imageBase64 ? this.imageBase64 : this.phoneDetail.image 
     };
     if(this.id!==undefined){
-      this.ps.updateProduct(this.id, submitData).subscribe(data => {
+      this.ps.updateProduct(this.id, {...submitData, status: +submitData.status, categoryId: +submitData.categoryId}).subscribe(data => {
         this.router.navigate(['admin/phones']);
       });
     }
     else {
-      this.ps.createProduct({...submitData, status: +submitData.status}).subscribe(data => {
+      this.ps.createProduct({...submitData, status: +submitData.status, categoryId: +submitData.categoryId}).subscribe(data => {
         this.router.navigate(['admin/phones']);
       }
       );

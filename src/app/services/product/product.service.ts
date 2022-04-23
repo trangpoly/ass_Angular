@@ -32,4 +32,10 @@ export class ProductService {
   getProductsClient(): Observable<any>{
     return this.http.get(`${urlApi}?status=0`);
   }
+  filterCate(id: number| string): Observable<any>{
+    return this.http.get(`${urlApi}?categoryId=${id}&status=0`)
+  }
+  searchProduct(data: string): Observable<any>{
+    return this.http.get(`${urlApi}?name_like=${data}`)
+  }
 }

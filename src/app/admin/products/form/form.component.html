@@ -48,10 +48,19 @@
                     <option value="0">Hiện</option>
                 </select>
             </div>
-            <div *ngIf="id">
-                <button *ngIf="act===undefined" type="submit" class="btn btn-dark col-2 m-auto">EDIT</button><br>
+            <div class="mb-3">
+                <label class="form-label">Category: </label>
+                <select class="form-select" formControlName="categoryId">
+                    <option *ngIf="phoneDetail.categoryId" value="{{phoneDetail.categoryId}}" selected>{{phoneDetail.categoryId}}</option>
+                    <option *ngFor="let cate of categories" value="{{cate.id}}">{{cate.name}}</option>
+                </select>
             </div>
-            <button *ngIf="id===undefined" [disabled]="phoneForm.invalid" type="submit" class="btn btn-dark col-2 m-auto">ADD</button><br><br>
+            <div *ngIf="id">
+                <button *ngIf="act===undefined" type="submit" class="btn btn-dark col-2 m-auto mb-2">EDIT</button>
+            </div>
+            <div>
+                <button *ngIf="id===undefined" [disabled]="phoneForm.invalid" type="submit" class="btn btn-dark col-2 m-auto mb-2">ADD</button>
+            </div>
             <a routerLink="/admin/phones" class="btn btn-dark col-2 m-auto">EXIT</a>
           </form>		
     </div>
