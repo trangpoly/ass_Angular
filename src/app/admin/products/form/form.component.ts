@@ -119,8 +119,9 @@ export class FormComponent implements OnInit {
   }
 
   changeImg(event :any) {
-    const arrayImageTypes = ['image/png', 'image/jpg'];
+    const arrayImageTypes = ['image/png', 'image/jpg','image/jpeg','image/jpe'];
     const file = event.target.files[0];
+    console.log(file);
     if (file.size > 500000) {
       return alert('Kích thước file quá lớn');
     } else if (!arrayImageTypes.includes(file.type)) {

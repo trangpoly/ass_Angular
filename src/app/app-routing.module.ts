@@ -45,10 +45,6 @@ const routes: Routes = [
         component: FormComponent
       },
       {
-        path: 'phone/edit/:id',
-        component: FormComponent
-      },
-      {
         path: 'phone/:id/:act',
         component: FormComponent
       }

@@ -8,7 +8,7 @@ body {
     border: 1px solid #e7e7e7;
     overflow: hidden;
     transition: all 0.4s ease-out;
-    min-height: 380px;
+    min-height: 430px;
 }
 .product-grid:hover{ box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.1); }
 .product-grid .product-image{ position: relative; }

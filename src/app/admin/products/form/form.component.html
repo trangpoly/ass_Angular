@@ -1,8 +1,8 @@
 <div class="container-fluid p-0 pt-3">
     <div class="modal-header">
         <div class="col-12" *ngIf="id">
-            <h3 *ngIf="act" class="col-12 fs-3 fw-bold text-center text-dark">Phone Detail</h3>
-            <h3 *ngIf="act === undefined" class="col-12 fs-3 fw-bold text-center text-dark">Edit Phone</h3>
+            <h3 *ngIf="act === 'view'" class="col-12 fs-3 fw-bold text-center text-dark">Phone Detail</h3>
+            <h3 *ngIf="act === 'edit'" class="col-12 fs-3 fw-bold text-center text-dark">Edit Phone</h3>
         </div>
         <h3 *ngIf="id===undefined" class="col-12 fs-3 fw-bold text-center text-dark">Add Phone</h3>
     </div>
@@ -40,7 +40,7 @@
                 <img *ngIf="!imageBase64" [src]="phoneDetail.image" width="200px" alt=""><br>
             </div>
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Status: </label>
+                <label class="form-label">Status: </label>
                 <select class="form-select" formControlName="status">
                     <option *ngIf="phoneDetail.status===0" value="0" selected >Hiện</option>
                     <option *ngIf="phoneDetail.status===1" value="1" selected >Ẩn</option>
@@ -49,14 +49,14 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label class="form-label">Category: </label>
+                <label class="form-label">Category: Category {{phoneDetail.categoryId}}</label>
                 <select class="form-select" formControlName="categoryId">
-                    <option *ngIf="phoneDetail.categoryId" value="{{phoneDetail.categoryId}}" selected>{{phoneDetail.categoryId}}</option>
+                    <!-- <option *ngIf="phoneDetail.categoryId" value="{{phoneDetail.categoryId}}" selected >Category {{phoneDetail.categoryId}}</option> -->
                     <option *ngFor="let cate of categories" value="{{cate.id}}">{{cate.name}}</option>
                 </select>
             </div>
             <div *ngIf="id">
-                <button *ngIf="act===undefined" type="submit" class="btn btn-dark col-2 m-auto mb-2">EDIT</button>
+                <button *ngIf="act==='edit'" type="submit" class="btn btn-dark col-2 m-auto mb-2">EDIT</button>
             </div>
             <div>
                 <button *ngIf="id===undefined" [disabled]="phoneForm.invalid" type="submit" class="btn btn-dark col-2 m-auto mb-2">ADD</button>

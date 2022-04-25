@@ -29,7 +29,7 @@
               ></app-phone-status>
             </td>
             <td><a routerLink="/admin/phone/{{phone.id}}/view" class="text-dark"><i class="fas fa-eye"></i></a></td>
-            <td><a routerLink="/admin/phone/edit/{{phone.id}}" class="text-dark"><i class="fas fa-edit"></i></a></td>
+            <td><a routerLink="/admin/phone/{{phone.id}}/edit" class="text-dark"><i class="fas fa-edit"></i></a></td>
             <td><a (click)="onRemove(phone.id)" class="text-dark"><i class="fas fa-trash-alt"></i></a></td>
           </tr>
         </tbody>
